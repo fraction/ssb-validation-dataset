@@ -14,7 +14,7 @@ This module has a file called `data.json` which contains a pretty-printed JSON
 array where each array item is an object. Each object has a few entries:
 
 - **`state` (Object | null):** ID and sequence number of previous message, if it exists.
-- **`message (Any)`:** The message to be inspected, which is just a plain message
+- **`message` (Any):** The message to be inspected, which is just a plain message
   (sometimes called `value` in implementations that use `{ key, value }` to
   represent messages).
 - **`valid` (Boolean):** Whether the message is valid.
