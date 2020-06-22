@@ -436,8 +436,8 @@
       },
       "signature": "HR3lI0pOTYaaKTWwI5yBr88anTIOsp4MkxohnPDXuohKfgWUQh8loOJxbnpoQ1WveRtmY9O18xSXUR/3zK3sAg==.sig.ed25519"
     },
-    "error": null,
-    "valid": true,
+    "error": "HMAC key must be canonical base64",
+    "valid": false,
     "id": "%yFSQ2ocUAE2km+EM5wGj4KlpNTfyEvO7mgssEaAYKvs=.sha256"
   },
   {
@@ -1978,7 +1978,7 @@
       },
       "signature": "zqHrgxcxy9umsPaR7FHHn4PFq5Dsev0T3ZTEJbjW7Xqka0GofVls6sVRK69rXbNkecP4UHORPhPZ6c8EN6FADg==.sig.ed25519"
     },
-    "error": "Message sequence must be the previous sequence number plus one",
+    "error": "Message previous must be the previous message ID",
     "valid": false,
     "id": "%ULzidT1Bbli5Qax+ap1QeHPjq6AZFbbTgczytrG0ENg=.sha256"
   },
@@ -2126,7 +2126,7 @@
       },
       "signature": "HR3lI0pOTYaaKTWwI5yBr88anTIOsp4MkxohnPDXuohKfgWUQh8loOJxbnpoQ1WveRtmY9O18xSXUR/3zK3sAg==.sig.ed25519"
     },
-    "error": "Signature value must verify the unsigned message bytes",
+    "error": "HMAC key must be canonical base64",
     "valid": false,
     "id": "%yFSQ2ocUAE2km+EM5wGj4KlpNTfyEvO7mgssEaAYKvs=.sha256"
   }

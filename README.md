@@ -25,7 +25,7 @@ array where each array item is an object. Each object has a few entries:
 ## Contributing
 
 If you find a tricky message that might be handled inconsistently by different
-validators, please add it to the list. 
+validators, please add it to the list.
 
 ## License
 
