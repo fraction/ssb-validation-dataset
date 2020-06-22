@@ -12,9 +12,4 @@ replace golang.org/x/crypto => github.com/cryptix/golang_x_crypto v0.0.0-2020030
 
 replace go.cryptoscope.co/ssb => /Users/cryptix/ssb/go-ssb
 
-require (
-	github.com/davecgh/go-spew v1.1.1
-	github.com/shurcooL/go v0.0.0-20200502201357-93f07166e636 // indirect
-	github.com/shurcooL/go-goon v0.0.0-20170922171312-37c2f522c041
-	go.cryptoscope.co/ssb v0.0.0-20200302095059-b4d663e8b635
-)
+require go.cryptoscope.co/ssb v0.0.0-20200302095059-b4d663e8b635

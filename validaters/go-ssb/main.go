@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/davecgh/go-spew/spew"
 	"go.cryptoscope.co/ssb"
 	"go.cryptoscope.co/ssb/message/legacy"
 )
@@ -35,6 +34,8 @@ func main() {
 	err = json.NewDecoder(f).Decode(&cases)
 	check(err)
 
+	failed := 0
+	checked := 0
 	for i, tc := range cases {
 		var hmacKey *[32]byte
 
@@ -56,11 +57,16 @@ func main() {
 			}
 		}
 
+		checked++
 		gotRef, _, err := legacy.Verify(tc.Message, hmacKey)
 		if tc.Valid {
-			check(err)
+			if err != nil {
+				failed++
+				check(err)
+			}
 		} else {
 			if err == nil {
+				failed++
 				fmt.Printf("%05d: shouldnt pass (%s): %s\n", i, gotRef.ShortRef(), tc.Error)
 				if !tc.ID.Equal(*gotRef) {
 					fmt.Printf("%05d: key divergence! %s %s\n", i, gotRef.Ref(), tc.ID.Ref())
@@ -68,25 +74,6 @@ func main() {
 			}
 		}
 	}
-}
 
-// utils
-type b64str []byte
-
-func (s *b64str) UnmarshalJSON(data []byte) error {
-	var strdata string
-	err := json.Unmarshal(data, &strdata)
-	if err != nil {
-		return fmt.Errorf("b64str: json decode of string failed: %w", err)
-	}
-	decoded := make([]byte, len(strdata)) // will be shorter
-	n, err := base64.StdEncoding.Decode(decoded, []byte(strdata))
-	if err != nil {
-		spew.Dump(data)
-		spew.Dump(strdata)
-		return fmt.Errorf("base64str: invalid base64 data: %w", err)
-	}
-
-	*s = decoded[:n]
-	return nil
+	fmt.Printf("failed on %d cases \n%f%% of checked (%d)\n%d ignored \n", failed, float64(failed*100/checked), checked, len(cases)-checked)
 }
